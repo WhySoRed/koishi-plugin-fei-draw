@@ -1,6 +1,6 @@
 {
   "name": "koishi-plugin-fei-draw",
-  "description": "fei的自定义抽牌~",
+  "description": "简易的json抽牌~牌堆json使用dice!格式(尚未彻底完成",
   "version": "0.0.1",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -9,14 +9,18 @@
     "dist"
   ],
   "license": "MIT",
-  "scripts": {},
   "keywords": [
     "chatbot",
     "koishi",
     "plugin"
   ],
-  "devDependencies": {},
   "peerDependencies": {
     "koishi": "^4.17.8"
+  },
+  "koishi": {
+    "preview": true
+  },
+  "dependencies": {
+    "@koishijs/plugin-explorer": "^1.5.4"
   }
 }
