@@ -21,8 +21,5 @@
   },
   "koishi": {
     "preview": true
-  },
-  "dependencies": {
-    "@koishijs/plugin-explorer": "^1.5.4"
   }
 }

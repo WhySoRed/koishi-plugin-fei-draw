@@ -1,5 +1,4 @@
 import { Context, Schema } from "koishi";
-import {} from "@koishijs/plugin-explorer";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -23,6 +22,9 @@ export function apply(ctx: Context, config: Config) {
         );
         for (let key in jsonData) {
           if (key === "_备注") continue;
+          if (key in deckList) {
+            console.log(`牌堆 ${key} 出现重复，已被覆盖。`);
+          }
           deckList[key] = jsonData[key];
         }
       }
