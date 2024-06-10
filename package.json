@@ -3,7 +3,7 @@
   "author": "whysored",
   "homepage": "https://github.com/WhySoRed/koishi-plugin-fei-draw",
   "description": "简易的json抽牌~牌堆json使用dice!格式(目前只有基础功能",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
@@ -21,5 +21,11 @@
   },
   "koishi": {
     "preview": true
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4"
   }
 }
