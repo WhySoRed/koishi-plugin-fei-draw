@@ -8,7 +8,7 @@ fei的自定义抽牌~
 牌堆的json文件沿用了dice!的格式<br>
 ...其实还兼容了yml格式)<br>
 
-## 牌堆的json文件格式
+## 牌堆的文件格式
 <details>
 <summary>json</summary>
 <pre>
@@ -54,6 +54,14 @@ _备注:
 `<message/>` | 消息分割 | `我想想...<message/>...我想不出来了`
 
 ...以及其他能够利用 `session.send()` 发送的koishi[消息元素](https://koishi.chat/zh-CN/api/message/elements.html)
+
+## 目前计划
+
+- [] 添加对骰子表达式的支持
+
+## 作者注
+
+为了避免用户自定义内容导致的滥用，预计不会支持自定义牌堆的功能
 
 ## 更新日志
 

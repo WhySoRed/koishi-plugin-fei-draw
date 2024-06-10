@@ -3,6 +3,15 @@ import { usageTemplate } from "./usage";
 import * as fs from "fs";
 import * as yaml from "js-yaml";
 import * as path from "path";
+import { asScope, Evaluator as DicexpEvaluator } from "@dicexp/naive-evaluator";
+import { functionScope, operatorScope } from "@dicexp/naive-evaluator-builtins";
+
+// https://www.npmjs.com/package//@dicexp/naive-evaluator
+const topLevelScope = asScope([operatorScope, functionScope]);
+const dicexpEvaluator = new DicexpEvaluator({
+  topLevelScope,
+  randomSourceMaker: "xorshift7",
+});
 
 export const name = "fei-draw";
 export interface Config {
@@ -253,4 +262,11 @@ export function apply(ctx: Context, config: Config) {
     result += deckNameList.join(" / ");
     return addAt(session) + result;
   });
+
+  ctx.command("牌堆.计算", "<表达式>").action(async ({ session }, expression) => {
+    if (!expression) {
+      return "请指定表达式。";
+    }
+    return addAt(session) + dicexpEvaluator.evaluate(expression, { execution: { seed: 42 } });
+  })
 }
