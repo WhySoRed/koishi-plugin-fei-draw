@@ -39,7 +39,43 @@ export let usage = usageTemplate();
 
 type deckData = { [deckName: string]: string[] };
 
-export function apply(ctx: Context, config: Config) {
+async function getEvaluator() {
+  const { Evaluator, asScope } = await import("@dicexp/naive-evaluator");
+  const { functionScope, operatorScope } = await import(
+    "@dicexp/naive-evaluator-builtins"
+  );
+  const topLevelScope = asScope([operatorScope, functionScope]);
+  const dicexpEvaluator = new Evaluator({
+    topLevelScope,
+    randomSourceMaker: "xorshift7",
+  });
+  return dicexpEvaluator;
+}
+
+export async function apply(ctx: Context, config: Config) {
+  const dicexpEvaluator = await getEvaluator();
+
+  const dicexpEvaluate = (code: string, seed?: number) => {
+    seed = seed || crypto.getRandomValues(new Uint32Array(1))[0]!;
+    const result = dicexpEvaluator.evaluate(code, { execution: { seed } });
+    if (result[0] === "ok") {
+      const resultValue = result[1];
+      return resultValue;
+    } else if (result[0] === "error") {
+      if (result[1] === "parse") {
+        console.log("解析错误：");
+      } else if (result[1] === "runtime") {
+        console.log("执行错误：" + result[2].message);
+      } else if (result[1] === "other") {
+        console.log("其他错误：" + result[2].message);
+      } else {
+        throw new Error("impossible");
+      }
+    } else {
+      throw new Error("impossible");
+    }
+  };
+
   const addAt = (session: Session) =>
     config.addAt ? h.at(session.userId) + " " : "";
 
@@ -173,6 +209,9 @@ export function apply(ctx: Context, config: Config) {
         src
       )}"`;
     });
+    string = string.replace(/\[(.*?)]/g, (_, dicexp) => {
+      return dicexpEvaluate(dicexp);
+    })
     string = string.replace(/{self}/g, self);
     string = string.replace(/{nick}/g, nick);
     return string;

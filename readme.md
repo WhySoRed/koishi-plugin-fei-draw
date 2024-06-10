@@ -6,7 +6,7 @@ fei的自定义抽牌~
 
 本插件是模仿了dice!的".draw"功能的自制抽牌插件<br>
 牌堆的json文件沿用了dice!的格式<br>
-...其实还兼容了yml格式)<br>
+...还兼容了yml格式)<br>
 
 ## 牌堆的json文件格式
 <details>
@@ -40,6 +40,7 @@ fei的自定义抽牌~
   - ...
 _备注:
   - "..."
+</pre>
 </details>
 
 ## 目前支持的插值内容:
@@ -51,11 +52,25 @@ _备注:
 `{nick}` | 发送者的群昵称或昵称 | `{self}疑惑地看着{nick}`
 `<img src="..."/>` | html标签格式的图片(koishi本身支持) | `<img src="https://koishi.chat/logo.png"/>`
 `[CQ:image,file=...]` | cq码格式的图片(手动转换成img进行了支持) | `[CQ:image,file=https://koishi.chat/logo.png]`
+`<br>` | 换行 | `我看看...<br>是这样吗？`
 `<message/>` | 消息分割 | `我想想...<message/>...我想不出来了`
+`[骰子表达式]` | 骰子表达式[Dicexp](https://github.com/umajho/dicexp) | `[1d6+1]`
 
 ...以及其他能够利用 `session.send()` 发送的koishi[消息元素](https://koishi.chat/zh-CN/api/message/elements.html)
 
+## 未来计划
+
+- [] 加入对权重语法的支持
+
+## 作者声明
+
+为避免被滥用，本插件的更新计划不会包含用户通过指令自定义牌堆的功能
+
 ## 更新日志
+
+### 0.0.6
+
+- 支持了骰子表达式
 
 ### 0.0.5
 
