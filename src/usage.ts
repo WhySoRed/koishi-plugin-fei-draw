@@ -68,7 +68,7 @@ ${usageWarning}
 牌堆的json文件沿用了dice!的格式<br>
 ...其实还兼容了yml格式)<br>
 
-关于目前支持的牌堆格式请查看[插件主页](https://github.com/WhySoRed/koishi-plugin-fei-draw)
+关于目前支持的牌堆格式请查看 -> [插件主页](https://github.com/WhySoRed/koishi-plugin-fei-draw)
 
 **注意:更新牌堆后请重载配置**
 
