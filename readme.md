@@ -42,6 +42,7 @@ _备注:
   - "..."
 </pre>
 </details>
+`_备注` 是可选的, 会被忽略
 
 ## 目前支持的插值内容:
 
@@ -52,7 +53,7 @@ _备注:
 `{nick}` | 发送者的群昵称或昵称 | `{self}疑惑地看着{nick}`
 `<img src="..."/>` | html标签格式的图片(koishi本身支持) | `<img src="https://koishi.chat/logo.png"/>`
 `[CQ:image,file=...]` | cq码格式的图片(手动转换成img进行了支持) | `[CQ:image,file=https://koishi.chat/logo.png]`
-`<br>` | 换行 | `我看看...<br>是这样吗？`
+`<br>` `\n` | 换行 | `我看看...<br>是这样吗？`
 `<message/>` | 消息分割 | `我想想...<message/>...我想不出来了`
 `[骰子表达式]` | 骰子表达式[Dicexp](https://github.com/umajho/dicexp) | `[1d6+1]`
 

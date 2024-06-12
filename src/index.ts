@@ -19,7 +19,7 @@ export interface Config {
 
 export const Config: Schema<Config> = Schema.object({
   addAt: Schema.boolean().default(true).description("是否@发送者"),
-  drawText: Schema.string().default("你抽到了：").description("抽取结果的前缀"),
+  drawText: Schema.string().default("你抽到了：\n").description("抽取结果的前缀"),
   maxCount: Schema.number().default(5).description("最大单次抽取数量"),
   hiddenInternalDeck: Schema.boolean()
     .default(false)
@@ -31,8 +31,8 @@ export const Config: Schema<Config> = Schema.object({
     .default(false)
     .description("对多次抽取结果使用合并转发（如果平台支持）"),
   defaultRepeat: Schema.boolean().default(true).description("默认开启重复抽取"),
-  deckPath: Schema.path({ allowCreate: true }).description("牌堆文件夹路径"),
-  imgPath: Schema.path({ allowCreate: true }).description("图片文件夹路径"),
+  deckPath: Schema.path({ allowCreate: true }).description("牌堆文件夹路径，请填写绝对路径(如 E:\\bot\\deck 这样的路径)"),
+  imgPath: Schema.path({ allowCreate: true }).description("图片文件夹路径，请根据牌堆内的图片路径进行调整<br>尽量与牌堆文件夹路径相同"),
 });
 
 export let usage = usageTemplate();

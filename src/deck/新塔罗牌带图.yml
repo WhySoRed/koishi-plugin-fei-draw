@@ -1,3 +1,6 @@
+_备注:
+  - 本文件作为图片示例，需要高清版本的图片可以用 https://github.com/WhySoRed/cardDeck/tree/main/exampleImg 进行替换，但不建议在node_modules而是在自行确定的牌堆路径中进行修改，以免因更新被覆盖。
+
 新塔罗牌带图:
   - 黑桃Ace <img src="./exampleImg/SpadesAce.jpg"/>
   - 红心Ace <img src="./exampleImg/HeartsAce.jpg"/>
